@@ -33,10 +33,10 @@ The structure of the json submitted to the API looks like this.
 }  
 ```
 
-## Remove derpie service  
+## Remove derpsie service  
 
-To remove the derpie service that is listening on port 443 (causing NGINX to  
-fail), run the remove_derpie.yml playbook with the following command.  
+To remove the derpsie service that is listening on port 443 (causing NGINX to  
+fail), run the remove_derpsie.yml playbook with the following command.  
 
 ```
 ansible-playbook -i production -u ubuntu --ask-vault-pass remove_derpie.yml  
