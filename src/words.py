@@ -36,7 +36,15 @@ app = Flask(__name__)
 
 @app.errorhandler(404)
 def not_found(error=None):
-    message = {'status': 404, 'message': request.url + ' not found'}
+    message = {'status': 404, 'message': request.url + ' is hiding by the keys'}
+    response = jsonify(message)
+    response.status_code = 404
+    return response
+
+
+@app.errorhandler(500)
+def internal_error(error=None):
+    message = {'status': 500, 'message': request.url + ' has a stomach ache'}
     response = jsonify(message)
     response.status_code = 404
     return response
