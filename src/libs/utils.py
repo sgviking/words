@@ -12,6 +12,8 @@ def count_words(text):
     strings in a production environment this could be optimized by processing
     the strings in pieces.  Since this string comes from a POST request
     proxied in from NGINX this is limited by the size of allowed POST bodies.
+    Currently this program can only handle ~12M of POST data before it runs out
+    of memory on the production server (500M RAM).
     '''
     # regex from here: http://stackoverflow.com/a/12705513
     # match words, including words with apostrophes. Remove line endings
