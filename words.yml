@@ -52,7 +52,7 @@
       mode: 0644
     with_items:
       - /var/log/gunicorn/access.log
-      - /var/log/gunicorn/error.log
+      - /var/log/gunicorn/gunicorn.log
 
   - name: Add gunicorn upstart configuration from template
     template:

@@ -8,6 +8,5 @@ setuid nobody
 setgid nogroup
 chdir {{ api_destination }}
 
-# exec /usr/local/bin/gunicorn -w5 --error-logfile /var/log/gunicorn/error.log --access-logfile /var/log/gunicorn/access.log -b 0.0.0.0:443 --certfile=/etc/ssl/certs/words.crt --keyfile=/etc/ssl/private/words.key words:app
-exec /usr/local/bin/gunicorn -w5 --log-level {{ python_log_level }} --error-logfile /var/log/gunicorn/error.log --access-logfile /var/log/gunicorn/access.log -b 127.0.0.1:8000 words:app
+exec /usr/local/bin/gunicorn -w5 --log-level {{ python_log_level }} --error-logfile /var/log/gunicorn/gunicorn.log --access-logfile /var/log/gunicorn/access.log -b 127.0.0.1:8000 words:app
 
