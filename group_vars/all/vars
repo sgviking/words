@@ -1,0 +1,6 @@
+---
+apt_cache_valid_time: 86400
+api_destination: "/opt/srv/words"
+python_log_level: "INFO"
+server_cert: "{{ vault_server_cert }}"
+server_key: "{{ vault_server_key }}"
