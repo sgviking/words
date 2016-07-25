@@ -1,8 +1,12 @@
 # Words API
 
+## Source Code for Words API  
+
+The Python source for the Words API is located in src/  
+
 ## Install / Configure Words API  
 
-The Words API server can be configured by running the words.yml playbook with
+The Words API server can be configured by running the words.yml playbook with  
 the following command.  
 
 ```
@@ -14,11 +18,11 @@ The vault password is the same password as the API user.
 ## Testing Words API  
 
 The words_tiny.json, words_small.json and words_large.json can be used to test  
-the Words API with the curl command (replace pasword with bob's actual
-password).  
+the Words API with the curl command (replace user and pasword with actual user  
+and password).  
 
 ```
-curl -d@words_small.json -k -u "bob:password" https://159.203.202.59/  
+curl -d@words_small.json -k -u "user:password" https://159.203.202.59/  
 ```
 
 The current implementation of the Words API on the production server with  
