@@ -11,20 +11,6 @@
   - name: Fail if not on Ubuntu
     assert: { that: "ansible_distribution == 'Ubuntu'" }
 
-  - name: Disable and stop derpsie service
-    service:
-      name: derpsie
-      state: stopped
-      enabled: no
-
-  - name: Remove upstart file for derpsie service and remove derpsie script
-    file:
-      path: "{{ item }}"
-      state: absent
-    with_items:
-      - /etc/init/derpsie.conf
-      - /usr/local/bin/derpsie
-
   - name: Install pre-requisite packages and update apt cache
     apt:
       name: "{{ item }}"
