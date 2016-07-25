@@ -1,0 +1,55 @@
+---
+- name: Install server certificate
+  copy:
+    content: "{{ server_cert }}"
+    dest: /etc/ssl/certs/words.crt
+    owner: root
+    group: root
+    mode: 0600
+  notify: Restart Gunicorn
+
+- name: Debug - server_cert
+  debug: var=server_cert verbosity=4
+
+- name: Install server key
+  copy:
+    content: "{{ server_key }}"
+    dest: /etc/ssl/private/words.key
+    owner: root
+    group: root
+    mode: 0600
+  notify: Restart Gunicorn
+
+- name: Debug - server_key
+  debug: var=server_key verbosity=4
+
+- name: Add NGINX upstream_app_servers configuration
+  template:
+    src: upstream_app_servers.conf.j2
+    dest: /etc/nginx/conf.d/upstream_app_servers.conf
+    owner: root
+    mode: 0644
+  notify: Restart NGINX
+
+- name: Add NGINX client_max_body_size configuration
+  template:
+    src: client_max_body_size.conf.j2
+    dest: /etc/nginx/conf.d/client_max_body_size.conf
+    owner: root
+    mode: 0644
+  notify: Restart NGINX
+
+- name: Add NGINX default site
+  template:
+    src: default.j2
+    dest: /etc/nginx/sites-available/default
+    owner: root
+    mode: 0644
+  notify: Restart NGINX
+
+- name: Enable NGINX service and ensure it is running
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+

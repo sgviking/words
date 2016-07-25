@@ -1,0 +1,7 @@
+---
+apt_cache_valid_time: 86400
+api_destination: "/opt/srv/words"
+python_log_level: "INFO"
+client_max_body_size: 12M
+server_cert: "certificate goes here"
+server_key: "key goes here"

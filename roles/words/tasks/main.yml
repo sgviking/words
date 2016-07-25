@@ -1,0 +1,23 @@
+---
+- name: Debug - ansible_distribution
+  debug: var=ansible_distribution verbosity=2
+
+- name: Fail if not on Ubuntu
+  assert: { that: "ansible_distribution == 'Ubuntu'" }
+
+- name: Install pre-requisite packages and update apt cache
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ apt_cache_valid_time }}"
+  with_items:
+    - python-pip
+    - python-dev
+    - libffi-dev
+    - nginx
+
+- include: words.yml
+- include: gunicorn.yml
+- include: nginx.yml
+

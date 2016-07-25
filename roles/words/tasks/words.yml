@@ -1,0 +1,14 @@
+---
+# In production this would get pulled from a git repository
+- name: Copy Words API code (src/) to server
+  copy:
+    src: src/
+    dest: "{{ api_destination }}"
+    owner: nobody
+    group: nogroup
+  notify:
+    - Restart Gunicorn
+
+- name: Install pip packages
+  pip: requirements="{{ api_destination }}/requirements.txt"
+
