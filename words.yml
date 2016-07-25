@@ -38,6 +38,7 @@
   - name: Set permissions for gunicorn log directory
     file:
       path: /var/log/gunicorn
+      state: directory
       owner: root
       group: root
       mode: 0755
@@ -45,6 +46,7 @@
   - name: Set permissions for gunicorn log files
     file:
       path: "{{ item }}"
+      state: touch
       owner: nobody
       group: nogroup
       mode: 0644
