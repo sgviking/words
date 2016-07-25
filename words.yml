@@ -1,6 +1,6 @@
 ---
 - name: Provision and configure word API
-  hosts: all
+  hosts: words
   become: true
   gather_facts: true
   tasks:
